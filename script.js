@@ -690,3 +690,138 @@ function enhanceMobileNavigation() {
 // Вызвать после загрузки страницы и при изменении размера
 window.addEventListener('load', enhanceMobileNavigation);
 window.addEventListener('resize', enhanceMobileNavigation);
+
+// Хранилище контента страниц
+const pageContent = {
+    home: `
+        <div class="page home-page">
+            <h2>Добро пожаловать на наш сайт!</h2>
+            <p>Мы занимаемся профессиональной медийной раскруткой вашего бизнеса в интернете.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>🚀 Быстро</h3>
+                    <p>Быстрый рост популярности</p>
+                </div>
+                <div class="feature">
+                    <h3>🎯 Точно</h3>
+                    <p>Точное попадание в целевую аудиторию</p>
+                </div>
+                <div class="feature">
+                    <h3>💪 Эффективно</h3>
+                    <p>Максимальный результат</p>
+                </div>
+            </div>
+        </div>
+    `,
+    about: `
+        <div class="page about-page">
+            <h2>О нашей компании</h2>
+            <p>Мы команда профессионалов с многолетним опытом в медийной раскрутке.</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">50+</span>
+                    <span class="label">Проектов</span>
+                </div>
+                <div class="stat">
+                    <span class="number">5 лет</span>
+                    <span class="label">На рынке</span>
+                </div>
+                <div class="stat">
+                    <span class="number">100%</span>
+                    <span class="label">Клиентов довольны</span>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h3>Наша команда</h3>
+                <!-- Карусель -->
+            </div>
+        </div>
+    `,
+    blog: `
+        <div class="page blog-page">
+            <h2>Наш блог</h2>
+            <p>Последние новости и статьи из мира медийной раскрутки</p>
+            <div class="blog-posts"></div>
+        </div>
+    `,
+    portfolio: `
+        <div class="page portfolio-page">
+            <h2>Наши работы</h2>
+            <p>Примеры успешных проектов</p>
+            <div class="gallery"></div>
+        </div>
+    `,
+    contact: `
+        <div class="page contact-page">
+            <h2>Свяжитесь с нами</h2>
+            
+            <form id="contact-form">
+                <input type="text" id="name" placeholder="Ваше имя" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <textarea id="message" placeholder="Сообщение" rows="5" required></textarea>
+                <button type="submit" id="submit-btn">Отправить</button>
+                <div id="form-status"></div>
+            </form>
+            
+            <div class="contact-info">
+                <p>📞 +7 (953) 171-39-47</p>
+                <p>✉️ avopsev80@gmail.com</p>
+                <p>📍 Санкт-Петербург, улица Пушкина, дом 123</p>
+            </div>
+        </div>
+    `
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Загружаем страницу из URL hash или home
+    const hash = window.location.hash.substring(1) || 'home';
+    loadPage(hash);
+    
+    // Обработка кликов по ссылкам
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = this.getAttribute('data-page');
+            window.location.hash = page;
+            loadPage(page);
+            updateAnimation(page);
+            updateActiveLink(this);
+        });
+    });
+    
+    // Обработка изменения hash
+    window.addEventListener('hashchange', function() {
+        const page = window.location.hash.substring(1) || 'home';
+        loadPage(page);
+    });
+});
+
+function loadPage(pageName) {
+    const contentContainer = document.getElementById('content-container');
+    
+    if (pageContent[pageName]) {
+        contentContainer.innerHTML = pageContent[pageName];
+        
+        // Инициализация специфичных функций
+        if (pageName === 'blog') loadBlogPosts();
+        if (pageName === 'portfolio') initGallery();
+        if (pageName === 'contact') initContactForm();
+        if (pageName === 'about') initSimpleCarousel();
+        
+        // Обновление анимации
+        const activeLink = document.querySelector(`.nav-link[data-page="${pageName}"]`);
+        if (activeLink) {
+            updateAnimation(pageName);
+            updateActiveLink(activeLink);
+        }
+        
+        // Прокрутка к началу
+        window.scrollTo(0, 0);
+    }
+}
+
+// Остальные функции (updateAnimation, updateActiveLink, loadBlogPosts и т.д.)

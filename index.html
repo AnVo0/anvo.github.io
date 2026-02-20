@@ -1,96 +1,38 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="hyunya.css">
-        <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap" rel="stylesheet">
-        <title>Медийная раскрутка - Главная</title>
-    </head>
-    <body>
-        <!-- Полупрозрачная подложка для навигации на всю ширину -->
-        <div class="nav-wrapper">
-            <h1>Медийная раскрутка</h1>
-            <div class="nav-container">
-                <nav>
-                    <a href="#" data-page="home" class="nav-link">Главная</a>
-                    <a href="#" data-page="about" class="nav-link">О нас</a>
-                    <a href="#" data-page="blog" class="nav-link">Блог</a>
-                    <a href="#" data-page="portfolio" class="nav-link">Портфолио</a>
-                    <a href="#" data-page="contact" class="nav-link">Контакты</a>
-                    <div class="animation start-home"></div>
-                </nav>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hyunya.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap" rel="stylesheet">
+    <title>Медийная раскрутка</title>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <div class="nav-container">
+            <nav>
+                <a href="#home" class="nav-link" data-page="home">Главная</a>
+                <a href="#about" class="nav-link" data-page="about">О нас</a>
+                <a href="#blog" class="nav-link" data-page="blog">Блог</a>
+                <a href="#portfolio" class="nav-link" data-page="portfolio">Портфолио</a>
+                <a href="#contact" class="nav-link" data-page="contact">Контакты</a>
+                <div class="animation start-home"></div>
+            </nav>
         </div>
+    </div>
 
-        <!-- Контейнер для динамического контента -->
-        <main id="content-container">
-            <!-- Контент будет загружаться сюда -->
-        </main>
+    <h1>Медийная раскрутка</h1>
 
-        <!-- Футер -->
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>О нас</h3>
-                    <p>Мы занимаемся профессиональной медийной раскруткой вашего бизнеса в интернете.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Быстрые ссылки</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" data-page="home" class="footer-link">Главная</a></li>
-                        <li><a href="#" data-page="about" class="footer-link">О нас</a></li>
-                        <li><a href="#" data-page="blog" class="footer-link">Блог</a></li>
-                        <li><a href="#" data-page="portfolio" class="footer-link">Портфолио</a></li>
-                        <li><a href="#" data-page="contact" class="footer-link">Контакты</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Контакты</h3>
-                    <ul class="footer-contact">
-                        <li>📞 +7 (953) 171-39-47</li>
-                        <li>✉️ avopsev80@gmail.com</li>
-                        <li>📍 Санкт-Петербург, ул. Пушкина, 123</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Правовая информация</h3>
-                    <ul class="footer-legal">
-                        <li><a href="#" class="legal-link" data-modal="privacy">Политика конфиденциальности</a></li>
-                        <li><a href="#" class="legal-link" data-modal="personal">Согласие на обработку персональных данных</a></li>
-                        <li><a href="#" class="legal-link" data-modal="terms">Пользовательское соглашение</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Медийная раскрутка. Все права защищены.</p>
-            </div>
-        </footer>
+    <!-- Контейнер для контента -->
+    <main id="content-container">
+        <!-- Контент будет загружаться сюда -->
+    </main>
 
-        <!-- Модальные окна для правовой информации -->
-        <div id="privacy-modal" class="modal">
-            <!-- ... содержимое модального окна ... -->
-        </div>
-        
-        <div id="personal-modal" class="modal">
-            <!-- ... содержимое модального окна ... -->
-        </div>
-        
-        <div id="terms-modal" class="modal">
-            <!-- ... содержимое модального окна ... -->
-        </div>
+    <!-- Футер -->
+    <footer class="site-footer" id="footer">
+        <!-- тот же футер -->
+    </footer>
 
-        <script src="script.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                if (typeof initFooterModals === 'function') {
-                    initFooterModals();
-                }
-            });
-        </script>
-    </body>
+    <script src="script.js"></script>
+</body>
 </html>
